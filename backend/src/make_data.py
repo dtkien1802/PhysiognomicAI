@@ -8,7 +8,7 @@ import numpy as np
 
 detector=MTCNN()
 landmark_detector=dlib.shape_predictor("../models/shape_predictor_68_face_landmarks.dat")
-data_folder="../FaceShape Dataset/training_set"
+data_folder="../face_data"
 
 landmark_list=[]
 label_list=[]
