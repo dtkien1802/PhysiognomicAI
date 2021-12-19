@@ -23,104 +23,15 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
-    <style>
-      body {
-        padding: 0px;
-        margin: 0px;
-        font-family: "Montserrat", sans-serif;
-        /* color: white; */
-      }
-
-      body,
-      html {
-        height: 100%;
-      }
-      html,
-      body {
-        padding: 0px;
-        margin: 0px;
-
-        background: url("../static/back.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100%;
-        overflow-x: scroll;
-      }
-
-      .header {
-        background-color: rgba(0, 0, 0, 0.3);
-        font-weight: 700;
-        /* text-transform: uppercase; */
-        /* font-size: large; */
-        /* color: white; */
-
-        text-align: center;
-        padding: 30px;
-      }
-
-      .info {
-        text-align: left;
-        /* color: gray; */
-        width: 30%;
-        margin: auto;
-        padding: 20px;
-        font-size: 14px;
-      }
-
-      .content {
-        width: 100%;
-      }
-
-      .upload_part {
-        background-color: rgba(0, 0, 0, 0.3);
-        text-align: center;
-        padding: 40px;
-      }
-
-      .upload_hint {
-        margin: 10px;
-        font-size: 14px;
-        /* color: rgb(200, 200, 200); */
-      }
-
-      .result_part {
-        text-align: center;
-        /* padding: 40px; */
-      }
-
-      .result_title {
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .result_id {
-        /* padding: 10px; */
-        margin: 15px;
-        font-size: 16px;
-      }
-
-      .result_id_number {
-        margin: 15px;
-        padding: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        background-color: #feed06;
-        color: black;
-        font-weight: bold;
-        font-size: 18px;
-        border-radius: 5px;
-      }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static', filename='myCss.css')}}">
   </head>
 
   <body>
-    <!-- As a heading -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1"
-          >PhysiognomicAI - Xem Tướng bằng AI</span
-        >
+        <span class="navbar-brand mb-0 h1">
+          PhysiognomicAI - Xem Tướng bằng AI
+        </span>
 
         <div class="d-flex">
           <div id="navbarNav">
@@ -140,69 +51,49 @@
     </nav>
     <div class="container">
       <div class="m-5 col-5">
-        <form action="/" method="POST" enctype="multipart/form-data" id="form">
+        <form id="form">
           <div class="row">
-            <label for="fileinput" class="form-label"
-              >Chọn file ảnh có 01 khuôn mặt nhìn thẳng...</label
-            >
+            <label for="fileinput" class="form-label">
+              Chọn file ảnh có 01 khuôn mặt nhìn thẳng...
+            </label>
             <div class="mb-3 col-9">
-              <input
-                class="form-control"
-                type="file"
-                name="file"
-                id="fileinput"
-                accept="image/*"
-              />
-            </div>
-            <div class="col-3">
-              <button class="btn btn-primary" type="submit">Tải lên</button>
+              <input class="form-control" type="file" name="file" id="fileinput" accept="image/*"/>
             </div>
           </div>
         </form>
+        <div >
+          <button class="btn btn-primary"  id="submit">Tải lên</button>
+        </div>
         <div class="upload_hint" id="upload_hint">
           Các định dạng được hỗ trợ: PNG, JPG và JPEG.
         </div>
       </div>
     </div>
+    <div>
+      <button id="start-camera">Start Camera</button>
+    </div>
 
     <div class="result_part">
-      {% if msg %}
-      <div class="result_id">{{ msg }}</div>
-      {% if hasface %}
+      <div class="result_id" id="result_id"></div>
 
       <div class="result_id">
         Bạn có khuôn mặt:
-        <span class="result_id_number">{{ face_shape }}</span>
+        <span class="result_id_number" id="result_id_number"></span>
       </div>
-      {% endif %}
       <div class="container">
         <div class="row">
-          {% if user_image %}
           <div class="col-2">
-            <img
-              style="max-width: 160px; border-radius: 1rem"
-              src="{{ url_for('static', filename=user_image) }}?{{ rand }}"
-              alt="User Image"
-            />
+            <video id="video" width="320" height="240" autoplay></video>
+            <canvas id="canvas" width="320" height="240"></canvas>
+            <img id="img"style="max-width: 160px; border-radius: 1rem"/>
           </div>
-          {% endif %} {% if extra %}
           <div class="col-10" style="display: inline-block">
-            <b>Diễn giải:</b> {{ extra }}
+            <b>Diễn giải:</b> <p id="extra"></p>
           </div>
-          {% endif %} {% endif %}
         </div>
       </div>
     </div>
     <div class="footer"></div>
   </body>
-  <script>
-    // $("#fileinput").change(function () {
-    $("#form").submit(function () {
-      $("#upload_hint").text(
-        "Đang tải file " + $("#fileinput")[0].files[0].name + " lên server..."
-      );
-    });
-
-    // });
-  </script>
+  <script src="{{url_for('static', filename='main.js')}}"></script>
 </html>
