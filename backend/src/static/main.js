@@ -6,7 +6,7 @@ var buttonSubmit=document.getElementById('submit');
 var fileInput=document.getElementById('fileinput')
 
 buttonSubmit.addEventListener("click",function (){
-    camera_button.textContent="Start Camera"
+    camera_button.textContent="Bật camera"
     if(video.srcObject!=null){
         video.srcObject.getTracks().forEach(function(track) {
             track.stop();
@@ -23,15 +23,17 @@ buttonSubmit.addEventListener("click",function (){
     if (file) {
         reader.readAsDataURL(file);
     }
+    document.getElementById("bottom").hidden=false
     img.hidden=false
     video.hidden=true
     canvas.hidden=true
 })
 
 camera_button.addEventListener('click', async function() {
-    if(camera_button.textContent=="Start Camera")
+    if(camera_button.textContent=="Bật camera")
     {
-        camera_button.textContent="Capture Image"
+        clear();
+        camera_button.textContent="Chụp ảnh"
 
         let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
         video.srcObject = stream;
@@ -41,7 +43,8 @@ camera_button.addEventListener('click', async function() {
 
     }else
     {
-        camera_button.textContent="Start Camera"
+        document.getElementById("bottom").hidden=false
+        camera_button.textContent="Bật camera"
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         let img_base64 = canvas.toDataURL('image/jpeg')
         sendImageToServer(img_base64)
@@ -71,4 +74,14 @@ function sendImageToServer(img_base64)
     body.append('img', img_base64);
     xhr.open('POST', '/', true);
     xhr.send(body);
+}
+
+fileInput.addEventListener('click',clear)
+
+function clear()
+{
+    document.getElementById("result_id").innerHTML=""
+    document.getElementById("extra").innerHTML=""
+    document.getElementById("result_id_number").innerHTML=""
+    document.getElementById("bottom").hidden=true
 }

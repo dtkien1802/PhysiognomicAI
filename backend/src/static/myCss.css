@@ -1,80 +1,55 @@
-
 body {
-padding: 0px;
-margin: 0px;
-font-family: "Montserrat", sans-serif;
+    padding: 0px;
+    margin: 0px;
+
+    background: url("../static/back.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow-x: scroll;
+  }
+
+#left, #right {
+    margin-top: 20px;
+    display: inline;
+    float:left;
+    width: 50%;
+    text-align: center;
+}
+#bottom{
+    border-radius: 50px;
+    border: solid 1px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #98FB98;
+}
+#ShowImage,#result_id{
+    margin-top: 30px;
+    text-align: center;
+}
+.spacer {clear:both;}
+#top {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    font-weight: 700;
 }
 
-body,
-html {
-height: 100%;
-}
-html,
-body {
-padding: 0px;
-margin: 0px;
+#result_id {
+    margin: 15px;
+    font-size: 16px;
+  }
 
-background: url("../static/back.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-height: 100%;
-overflow-x: scroll;
-}
-
-.header {
-background-color: rgba(0, 0, 0, 0.3);
-font-weight: 700;
-
-text-align: center;
-padding: 30px;
-}
-
-.info {
-text-align: left;
-width: 30%;
-margin: auto;
-padding: 20px;
-font-size: 14px;
-}
-
-.content {
-width: 100%;
-}
-
-.upload_part {
-background-color: rgba(0, 0, 0, 0.3);
-text-align: center;
-padding: 40px;
-}
-
-.upload_hint {
-margin: 10px;
-font-size: 14px;
-}
-
-.result_part {
-text-align: center;
-}
-
-.result_title {
-font-size: 18px;
-font-weight: bold;
-}
-
-.result_id {
-margin: 15px;
-font-size: 16px;
-}
-
-.result_id_number {
-margin: 15px;
-padding: 10px;
-padding-left: 15px;
-padding-right: 15px;
-background-color: #feed06;
-color: black;
-font-weight: bold;
-font-size: 18px;
-border-radius: 5px;
-}
+#result_id_number {
+    margin: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #feed06;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+  }

@@ -27,73 +27,73 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">
-          PhysiognomicAI - Xem Tướng bằng AI
-        </span>
-
-        <div class="d-flex">
-          <div id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Trang chủ</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">Về nhóm 10</a>
-              </li>
-            </ul>
+    <div id="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">
+            PhysiognomicAI - Xem Tướng bằng AI
+          </span>
+  
+          <div class="d-flex">
+            <div id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Trang chủ</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">Về nhóm 10</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="m-5 col-5">
-        <form id="form">
-          <div class="row">
+      </nav>
+
+      <div id="middle">
+        <div id="left">
+          <form id="form">
             <label for="fileinput" class="form-label">
               Chọn file ảnh có 01 khuôn mặt nhìn thẳng...
             </label>
             <div class="mb-3 col-9">
               <input class="form-control" type="file" name="file" id="fileinput" accept="image/*"/>
             </div>
-          </div>
-        </form>
-        <div >
+          </form>
           <button class="btn btn-primary"  id="submit">Tải lên</button>
-        </div>
-        <div class="upload_hint" id="upload_hint">
-          Các định dạng được hỗ trợ: PNG, JPG và JPEG.
-        </div>
-      </div>
-    </div>
-    <div>
-      <button id="start-camera">Start Camera</button>
-    </div>
-
-    <div class="result_part">
-      <div class="result_id" id="result_id"></div>
-
-      <div class="result_id">
-        Bạn có khuôn mặt:
-        <span class="result_id_number" id="result_id_number"></span>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <video id="video" width="320" height="240" autoplay></video>
-            <canvas id="canvas" width="320" height="240"></canvas>
-            <img id="img"style="max-width: 160px; border-radius: 1rem"/>
-          </div>
-          <div class="col-10" style="display: inline-block">
-            <b>Diễn giải:</b> <p id="extra"></p>
+          <div class="upload_hint" id="upload_hint">
+            Các định dạng được hỗ trợ: PNG, JPG và JPEG.
           </div>
         </div>
+        <div id="right">
+            <button class="btn btn-primary" id="start-camera">Bật camera</button>
+        </div>
+        <br class = "spacer"/>
       </div>
+      <div id="ShowImage">
+        <video id="video" width="320" height="240" autoplay></video>
+        <canvas id="canvas" width="320" height="240"></canvas>
+        <img id="img"style="max-width: 160px; border-radius: 1rem"/>
+      </div>
+      <div id="result_id"></div>
+      <div id="bottom" hidden>
+        <div id="result">
+          Bạn có khuôn mặt:
+          <span id="result_id_number"></span>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div style="display: inline-block">
+              <b>Diễn giải:</b> <p id="extra"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-    <div class="footer"></div>
   </body>
   <script src="{{url_for('static', filename='main.js')}}"></script>
 </html>
