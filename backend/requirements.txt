@@ -1,0 +1,6 @@
+dlib==19.22.1
+Flask==2.0.2
+mtcnn==0.1.1
+tensorflow==2.7.0
+imutils==0.5.4
+sklearn==1.0.1
