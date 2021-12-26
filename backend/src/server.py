@@ -67,7 +67,7 @@ def AI():
                 extra = dict[y_pred[0]][1]
                 ID = dict[y_pred[0]][0]
 
-                # cv2.imwrite(path_to_save, face)
+                cv2.imwrite(path_to_save, face)
                 break
 
             return jsonify(
