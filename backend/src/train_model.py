@@ -21,14 +21,17 @@ model.fit(X_train,y_train)
 
 y_pred=model.predict(X_test)
 
-from sklearn.metrics import accuracy_score,precision_score,confusion_matrix
-matrix = confusion_matrix(y_test, y_pred)
-print(matrix)
-print("Accuracy score for each class: ",matrix.diagonal()/matrix.sum(axis=1))
-print('Accuracy score - Test dataset: {}'.format(accuracy_score(y_test, y_pred)))
-
-print('Precision_score - Test dataset: {}'.format(precision_score(y_test, y_pred,average=None)))
-
 file=open("../models/model.sav",'wb')
 pickle.dump(model,file)
 file.close()
+
+import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score,precision_score,plot_confusion_matrix,recall_score,f1_score
+plot_confusion_matrix(model, X_test, y_test)
+plt.show()
+
+print("Recall score for each class: ",recall_score(y_test, y_pred,average=None))
+print('Accuracy score - Test dataset: {}'.format(accuracy_score(y_test, y_pred)))
+
+print('Precision score - Test dataset: {}'.format(precision_score(y_test, y_pred,average=None)))
+print('F1 score - Test dataset: {}'.format(f1_score(y_test, y_pred,average=None)))
